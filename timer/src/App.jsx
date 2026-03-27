@@ -36,6 +36,13 @@ const startTimer = () => {
     intervalRef.current = null;
   };
 
+  const resetTimer = ()=>{
+    clearInterval(intervalRef.current);
+    setIsStop(false)
+    intervalRef.current = null;
+    setTime({ sec: 0, min: 0, hour: 0 })
+  }
+
   return (
     <div className='timer-container'>
       <div className='timer'>
@@ -48,6 +55,7 @@ const startTimer = () => {
         <div className='buttons'>
           <button onClick={startTimer}>{isStop ? "Resume" : "Start"}</button>
           <button onClick={stopTimer}>Stop</button>
+          <button onClick={resetTimer}>Reset</button>
         </div>
       </div>
     </div>
